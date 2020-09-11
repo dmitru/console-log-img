@@ -1,6 +1,7 @@
 {
   "name": "console-log-img",
   "version": "1.0.2",
+  "author": "Dmitry Borody <dmitriy.borodiy@gmail.com>",
   "description": "console.log for images: print from URLs, Canvas or ImageBitmap to browser console",
   "main": "build/main/index.js",
   "typings": "build/main/index.d.ts",
