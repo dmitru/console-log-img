@@ -44,7 +44,7 @@ initConsoleLogImg()
 
 // ... later in the code ...
 
-// Use for image URI:
+// Use with image URI:
 const imageUri = 'https://openclipart.org/image/800px/5661'
 console.img(imageUri)
 
