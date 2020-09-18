@@ -9,21 +9,25 @@
 
 # What is it
 
-**Tiny library to print images to browser console.** 
-**Think `console.log` but for images!**
+**A tiny library to print images to browser console.** 
 
-- zero dependencies
-- tiny
-- written in TypeScript
-- supports variety of image source: Canvas, 2D Context, ImageBitmap, image URIs
+**Think `console.log` for images!**
+
 
 The library extends the global `console` object with a new method:
 ```typescript
 console.img(imageSource: string | ImageBitmap | Canvas | OffscreenCanvas | CanvasRenderingContext2D, scale?: number)
 ```
 
-# Use Cases
+
+### Use Cases
 - Simplify debugging & development of canvas-based apps and algorithms
+
+### Features
+- zero dependencies
+- it's tiny!
+- written in TypeScript
+- supports a variety of image sources: image URIs, Canvas, Canvas2DRenderingContext, ImageBitmap
 
 # Install
 ```
