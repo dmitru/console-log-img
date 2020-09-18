@@ -84,9 +84,7 @@
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="__global.console.html#bitmap" class="tsd-kind-icon">bitmap</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="__global.console.html#image" class="tsd-kind-icon">image</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="__global.console.html#screenshot" class="tsd-kind-icon">screenshot</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="__global.console.html#img" class="tsd-kind-icon">img</a></li>
 							</ul>
 						</section>
 					</div>
@@ -95,12 +93,12 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="bitmap" class="tsd-anchor"></a>
-					<h3>bitmap</h3>
-					<div class="tsd-signature tsd-kind-icon">bitmap<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span>bitmap<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">ImageBitmap</span>, scale<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span></div>
+					<a name="img" class="tsd-anchor"></a>
+					<h3>img</h3>
+					<div class="tsd-signature tsd-kind-icon">img<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span>source<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">ImageBitmap</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">OffscreenCanvas</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">HTMLCanvasElement</span>, scale<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/dmitru/console-log-img/blob/0bd9482/src/lib/console-extensions.ts#L145">lib/console-extensions.ts:145</a></li>
+							<li>Defined in <a href="https://github.com/dmitru/console-log-img/blob/b182b10/src/lib/console-extensions.ts#L4">lib/console-extensions.ts:4</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -108,82 +106,14 @@
 						<ul class="tsd-parameters">
 							<li class="tsd-parameter-signature">
 								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-property">
-									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>bitmap<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">ImageBitmap</span>, scale<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>source<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">ImageBitmap</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">OffscreenCanvas</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">HTMLCanvasElement</span>, scale<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
 								</ul>
 								<ul class="tsd-descriptions">
 									<li class="tsd-description">
 										<h4 class="tsd-parameters-title">Parameters</h4>
 										<ul class="tsd-parameters">
 											<li>
-												<h5>bitmap: <span class="tsd-signature-type">ImageBitmap</span></h5>
-											</li>
-											<li>
-												<h5><span class="tsd-flag ts-flagOptional">Optional</span> scale: <span class="tsd-signature-type">number</span></h5>
-											</li>
-										</ul>
-										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
-									</li>
-								</ul>
-							</li>
-						</ul>
-					</div>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="image" class="tsd-anchor"></a>
-					<h3>image</h3>
-					<div class="tsd-signature tsd-kind-icon">image<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span>src<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, scale<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/dmitru/console-log-img/blob/0bd9482/src/lib/console-extensions.ts#L146">lib/console-extensions.ts:146</a></li>
-						</ul>
-					</aside>
-					<div class="tsd-type-declaration">
-						<h4>Type declaration</h4>
-						<ul class="tsd-parameters">
-							<li class="tsd-parameter-signature">
-								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-property">
-									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>src<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, scale<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
-								</ul>
-								<ul class="tsd-descriptions">
-									<li class="tsd-description">
-										<h4 class="tsd-parameters-title">Parameters</h4>
-										<ul class="tsd-parameters">
-											<li>
-												<h5>src: <span class="tsd-signature-type">string</span></h5>
-											</li>
-											<li>
-												<h5><span class="tsd-flag ts-flagOptional">Optional</span> scale: <span class="tsd-signature-type">number</span></h5>
-											</li>
-										</ul>
-										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
-									</li>
-								</ul>
-							</li>
-						</ul>
-					</div>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="screenshot" class="tsd-anchor"></a>
-					<h3>screenshot</h3>
-					<div class="tsd-signature tsd-kind-icon">screenshot<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span>canvas<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">OffscreenCanvas</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">HTMLCanvasElement</span>, scale<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/dmitru/console-log-img/blob/0bd9482/src/lib/console-extensions.ts#L141">lib/console-extensions.ts:141</a></li>
-						</ul>
-					</aside>
-					<div class="tsd-type-declaration">
-						<h4>Type declaration</h4>
-						<ul class="tsd-parameters">
-							<li class="tsd-parameter-signature">
-								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-property">
-									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>canvas<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">OffscreenCanvas</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">HTMLCanvasElement</span>, scale<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
-								</ul>
-								<ul class="tsd-descriptions">
-									<li class="tsd-description">
-										<h4 class="tsd-parameters-title">Parameters</h4>
-										<ul class="tsd-parameters">
-											<li>
-												<h5>canvas: <span class="tsd-signature-type">OffscreenCanvas</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">HTMLCanvasElement</span></h5>
+												<h5>source: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">ImageBitmap</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">OffscreenCanvas</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">HTMLCanvasElement</span></h5>
 											</li>
 											<li>
 												<h5><span class="tsd-flag ts-flagOptional">Optional</span> scale: <span class="tsd-signature-type">number</span></h5>
@@ -217,13 +147,7 @@
 						<a href="__global.console.html" class="tsd-kind-icon">Console</a>
 						<ul>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="__global.console.html#bitmap" class="tsd-kind-icon">bitmap</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="__global.console.html#image" class="tsd-kind-icon">image</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="__global.console.html#screenshot" class="tsd-kind-icon">screenshot</a>
+								<a href="__global.console.html#img" class="tsd-kind-icon">img</a>
 							</li>
 						</ul>
 					</li>

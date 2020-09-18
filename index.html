@@ -64,10 +64,54 @@
 	<div class="row">
 		<div class="col-8 col-content">
 			<div class="tsd-panel tsd-typography">
-				<a href="#console-log-img" id="console-log-img" style="color: inherit; text-decoration: none;">
-					<h1>console-log-img</h1>
+				<h1 align="center">Print Images and Canvases to Browser Console ⚡️</h1>
+				<br>
+				<p align="center">
+					<img alt="MIT License" src="https://img.shields.io/github/license/dmitru/console-log-img"/>
+				</p>
+				<br />
+				<a href="#what-is-it" id="what-is-it" style="color: inherit; text-decoration: none;">
+					<h1>What is it</h1>
 				</a>
-				<p>console.log for images: print from URLs, Canvas or ImageBitmap to browser console</p>
+				<p><strong>Tiny library to print images to browser console.</strong>
+				<strong>Think <code>console.log</code> but for images!</strong></p>
+				<ul>
+					<li>zero dependencies</li>
+					<li>tiny</li>
+					<li>written in TypeScript</li>
+					<li>supports variety of image source: Canvas, 2D Context, ImageBitmap, image URIs</li>
+				</ul>
+				<p>The library extends the global <code>console</code> object with a new method:</p>
+				<pre><code class="language-typescript"><span class="hljs-built_in">console</span>.img(imageSource: <span class="hljs-built_in">string</span> | ImageBitmap | Canvas | OffscreenCanvas | CanvasRenderingContext2D, scale?: <span class="hljs-built_in">number</span>)</code></pre>
+				<a href="#use-cases" id="use-cases" style="color: inherit; text-decoration: none;">
+					<h1>Use Cases</h1>
+				</a>
+				<ul>
+					<li>Simplify debugging &amp; development of canvas-based apps and algorithms</li>
+				</ul>
+				<a href="#install" id="install" style="color: inherit; text-decoration: none;">
+					<h1>Install</h1>
+				</a>
+				<pre><code><span class="hljs-built_in">npm</span> i --save <span class="hljs-built_in">console</span>-log-img</code></pre>
+				<p>Or with Yarn:</p>
+				<pre><code>yarn <span class="hljs-keyword">add</span><span class="bash"> console-log-img</span></code></pre>
+				<a href="#usage" id="usage" style="color: inherit; text-decoration: none;">
+					<h1>Usage</h1>
+				</a>
+				<pre><code class="language-typescript"><span class="hljs-keyword">import</span> { initConsoleLogImg } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;console-log-img&#x27;</span>
+
+<span class="hljs-comment">// Run this once to initialize the library</span>
+initConsoleLogImg()
+
+<span class="hljs-comment">// ... later in the code ...</span>
+
+<span class="hljs-comment">// Use with image URI:</span>
+<span class="hljs-keyword">const</span> imageUri = <span class="hljs-string">&#x27;https://openclipart.org/image/800px/5661&#x27;</span>
+<span class="hljs-built_in">console</span>.img(imageUri)
+
+<span class="hljs-comment">// Use with a Canvas at 30% zoom</span>
+<span class="hljs-keyword">const</span> canvas = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">&#x27;#my-canvas&#x27;</span>)
+<span class="hljs-built_in">console</span>.img(canvas, <span class="hljs-number">0.3</span>)</code></pre>
 			</div>
 		</div>
 		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
