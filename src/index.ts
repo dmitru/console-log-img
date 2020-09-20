@@ -1,1 +1,1 @@
-export * from './lib/console-extensions';
+export * from './lib/console-extensions'
