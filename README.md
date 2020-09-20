@@ -12,10 +12,7 @@
 **Tiny library to print images to browser console.**
 **Think `console.log` but for images!**
 
-- supports many image source: Image elements, Canvas, 2D Context, ImageBitmap, URIs
-- zero dependencies
-- tiny
-- written in TypeScript
+It makes debugging & development of canvas or image-based apps and algorithms simplers.
 
 This library extends the global `console` object with a new method:
 
@@ -23,8 +20,8 @@ This library extends the global `console` object with a new method:
 console.img(
   imgSource:
     | string
-    | ImageBitmap
     | HTMLImageElement
+    | ImageBitmap
     | OffscreenCanvas
     | HTMLCanvasElement
     | CanvasRenderingContext2D,
@@ -32,28 +29,12 @@ console.img(
 )
 ```
 
-# Use Cases
-
-- Simplify debugging & development of canvas-based apps and algorithms
-
 ### Features
 
-- zero dependencies
-- it's tiny!
-- written in TypeScript
-- supports a variety of image sources: image URIs, Canvas, Canvas2DRenderingContext, ImageBitmap
-
-# Install
-
-```
-npm i --save console-log-img
-```
-
-Or with Yarn:
-
-```
-yarn add console-log-img
-```
+- ✅ supports many image source: Image elements, Canvas, 2D Context, ImageBitmap, image URIs
+- ✅ zero dependencies
+- ✅ it's tiny!
+- ✅ written in TypeScript
 
 # Usage
 
@@ -85,12 +66,26 @@ const imgEl = document.getElementById('my-img');
 console.img(imgEl);
 ```
 
-# Acknowledges & thanks
+# Install
+
+```
+npm i --save console-log-img
+```
+
+Or with Yarn:
+
+```
+yarn add console-log-img
+```
+
+# Acknowledges & Thanks
 
 - Source code was adapted from dunxrion/console.image
 - Original created by Adrian Cooney
 
-# Users
+# Used By
+
+Using console-log-img? Open an issue to add your company or project to this list.
 
 - [Inkarnate](https://inkarnate.com)
 - [WordCloudy](https://wordcloudy.com)
