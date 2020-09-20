@@ -12,6 +12,8 @@
 **Tiny library to print images to browser console.**
 **Think `console.log` but for images!**
 
+[VIEW DEMO](https://codesandbox.io/s/console-log-img-test-bti64)
+
 It makes development and debugging of canvas or image-based apps and algorithms a lot easier and more enjoyable. Really, who doesn't like images in the console? 😃
 
 This library extends the global `console` object with a new method:
