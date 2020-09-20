@@ -10,19 +10,19 @@ declare global {
       source: string | ImageBitmap | OffscreenCanvas | HTMLCanvasElement,
       scale?: number,
       printDimensions?: boolean
-    ) => void;
+    ) => void
   }
 }
 
-type Dimensions = { readonly w: number; readonly h: number };
+type Dimensions = { readonly w: number; readonly h: number }
 
 type Opts = {
-  printDimension?: boolean;
-};
+  printDimension?: boolean
+}
 
 const defaultOpts: Opts = {
   printDimension: true,
-};
+}
 
 /** Extends global console object with a new console.img method */
 export const initConsoleLogImg = (opts = defaultOpts) => {
@@ -47,42 +47,42 @@ export const initConsoleLogImg = (opts = defaultOpts) => {
     printDimensions = opts.printDimension
   ) => {
     if (typeof source === 'string') {
-      printFromImageUri(source, scale, printDimensions);
+      printFromImageUri(source, scale, printDimensions)
     } else if (source instanceof HTMLImageElement) {
-      printFromImageElement(source, scale, printDimensions);
+      printFromImageElement(source, scale, printDimensions)
     } else if (
       source instanceof HTMLCanvasElement ||
       source instanceof OffscreenCanvas ||
       source instanceof CanvasRenderingContext2D
     ) {
-      printFromCanvas(source, scale, printDimensions);
+      printFromCanvas(source, scale, printDimensions)
     } else if (source instanceof ImageBitmap) {
-      printFromImageBitmap(source, scale, printDimensions);
+      printFromImageBitmap(source, scale, printDimensions)
     } else {
       throw new Error(
         'unsupported source type, valid types are: string, Canvas or ImageBitmap'
-      );
+      )
     }
-  };
+  }
 
   const printFromImageUri = (
     url: string,
     scale = 1,
     printDimensions = opts.printDimension
   ) => {
-    const img = new Image();
+    const img = new Image()
 
     img.onload = () => {
-      const imgStyle = getImgStyle(img.width, img.height, scale);
+      const imgStyle = getImgStyle(img.width, img.height, scale)
       if (printDimensions) {
-        printImageDimensions(imgStyle);
+        printImageDimensions(imgStyle)
       }
-      printFromImgStyle(url, imgStyle);
-    };
+      printFromImgStyle(url, imgStyle)
+    }
 
-    img.src = url;
-    img.style.background = 'url(' + url + ')'; //Preload it again..
-  };
+    img.src = url
+    img.style.background = 'url(' + url + ')' //Preload it again..
+  }
 
   /**
    * Snapshot a canvas context and output it to the console.
@@ -93,29 +93,29 @@ export const initConsoleLogImg = (opts = defaultOpts) => {
     printDimensions = opts.printDimension
   ) => {
     const canvas =
-      source instanceof CanvasRenderingContext2D ? source.canvas : source;
+      source instanceof CanvasRenderingContext2D ? source.canvas : source
 
-    let c: HTMLCanvasElement | undefined;
+    let c: HTMLCanvasElement | undefined
     if ((canvas as HTMLCanvasElement).toDataURL) {
       // It's not an OffscreenCanvas
-      c = canvas as HTMLCanvasElement;
+      c = canvas as HTMLCanvasElement
     } else {
-      const c2 = createCanvas({ w: canvas.width, h: canvas.height });
-      const c2Ctx = c2.getContext('2d');
-      c2Ctx.drawImage(canvas, 0, 0);
-      c = c2;
+      const c2 = createCanvas({ w: canvas.width, h: canvas.height })
+      const c2Ctx = c2.getContext('2d')
+      c2Ctx.drawImage(canvas, 0, 0)
+      c = c2
     }
-    const imageUrl = c.toDataURL();
-    const width = canvas.width;
-    const height = canvas.height;
-    const imgStyle = getImgStyle(width, height, scale);
+    const imageUrl = c.toDataURL()
+    const width = canvas.width
+    const height = canvas.height
+    const imgStyle = getImgStyle(width, height, scale)
 
     if (printDimensions) {
-      printImageDimensions(imgStyle);
+      printImageDimensions(imgStyle)
     }
 
-    printFromImgStyle(imageUrl, imgStyle);
-  };
+    printFromImgStyle(imageUrl, imgStyle)
+  }
 
   /**
    * Display an image in the console.
@@ -128,24 +128,24 @@ export const initConsoleLogImg = (opts = defaultOpts) => {
     scale = 1,
     printDimensions = opts.printDimension
   ) => {
-    const canvas = createCanvas({ w: bitmap.width, h: bitmap.height });
+    const canvas = createCanvas({ w: bitmap.width, h: bitmap.height })
     const ctx = canvas.getContext(
       'bitmaprenderer'
-    ) as ImageBitmapRenderingContext;
-    const bitmap2 = await createImageBitmap(bitmap);
-    ctx.transferFromImageBitmap(bitmap2);
-    printFromCanvas(ctx.canvas, scale, printDimensions);
-  };
+    ) as ImageBitmapRenderingContext
+    const bitmap2 = await createImageBitmap(bitmap)
+    ctx.transferFromImageBitmap(bitmap2)
+    printFromCanvas(ctx.canvas, scale, printDimensions)
+  }
 
   const printFromImageElement = async (
     imgEl: HTMLImageElement,
     scale = 1,
     printDimensions = opts.printDimension
   ) => {
-    const bitmap = await createImageBitmap(imgEl);
-    printFromImageBitmap(bitmap, scale, printDimensions);
-  };
-};
+    const bitmap = await createImageBitmap(imgEl)
+    printFromImageBitmap(bitmap, scale, printDimensions)
+  }
+}
 
 // Utils
 
@@ -153,10 +153,10 @@ export const initConsoleLogImg = (opts = defaultOpts) => {
 const printImageDimensions = (style: ImgStyle) => {
   console.log(
     `Width = ${style.originalWidth}px, Height = ${style.originalHeight}px`
-  );
-};
+  )
+}
 
-type ImgStyle = ReturnType<typeof getImgStyle>;
+type ImgStyle = ReturnType<typeof getImgStyle>
 
 /**
  * Since the console.log doesn't respond to the `display` style,
@@ -182,8 +182,8 @@ const getImgStyle = (width: number, height: number, scale = 1) => {
       'px; line-height: ' +
       height +
       'px;',
-  };
-};
+  }
+}
 
 const printFromImgStyle = (imgUrl: string, style: ImgStyle) => {
   console.log(
@@ -196,23 +196,23 @@ const printFromImgStyle = (imgUrl: string, style: ImgStyle) => {
       'px ' +
       style.height +
       'px; background-size: 100% 100%; background-repeat: norepeat; color: transparent;'
-  );
-};
+  )
+}
 
 const createCanvas = (size: Dimensions, elemId?: string): HTMLCanvasElement => {
-  const canvas = document.createElement('canvas') as HTMLCanvasElement;
+  const canvas = document.createElement('canvas') as HTMLCanvasElement
 
   if (elemId != null) {
-    canvas.setAttribute('id', `${elemId}`);
+    canvas.setAttribute('id', `${elemId}`)
   }
-  canvas.width = size.w;
-  canvas.height = size.h;
+  canvas.width = size.w
+  canvas.height = size.h
 
-  canvas.style.position = 'absolute';
-  canvas.style.top = '0';
-  canvas.style.left = '0';
-  canvas.style.width = `${size.w}px`;
-  canvas.style.height = `${size.h}px`;
+  canvas.style.position = 'absolute'
+  canvas.style.top = '0'
+  canvas.style.left = '0'
+  canvas.style.width = `${size.w}px`
+  canvas.style.height = `${size.h}px`
 
-  return canvas;
-};
+  return canvas
+}
