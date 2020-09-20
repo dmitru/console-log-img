@@ -12,7 +12,7 @@
 **Tiny library to print images to browser console.**
 **Think `console.log` but for images!**
 
-It makes debugging & development of canvas or image-based apps and algorithms simplers.
+It makes development and debugging of canvas or image-based apps and algorithms a lot easier and more enjoyable. Really, who doesn't like images in the console? 😃
 
 This library extends the global `console` object with a new method:
 
@@ -25,7 +25,8 @@ console.img(
     | OffscreenCanvas
     | HTMLCanvasElement
     | CanvasRenderingContext2D,
-  scale = 1
+  scale = 1,
+  printDimensions = true,
 )
 ```
 
@@ -42,26 +43,29 @@ console.img(
 import { initConsoleLogImg } from 'console-log-img';
 
 // Run this once to initialize the library
-initConsoleLogImg();
+initConsoleLogImg({
+  // Optionally, disable image dimensions logging (enabled by default)
+  printDimensions: true,
+});
 
 // ... later in the code ...
 
-// Use with image URI, original size
+// Print an image from a URI, at original size
 console.img('https://openclipart.org/image/800px/5661');
 
-// Use with a Canvas, 30% zoom
+// Print a Canvas at 30% zoom, also log canvas dimensions
 const canvas = document.getElementById('my-canvas');
-console.img(canvas, 0.3);
+console.img(canvas, 0.3, true);
 
-// Use with CanvasRenderingContext2D
+// Print a CanvasRenderingContext2D
 const ctx = canvas.getContext('2d');
 console.img(ctx, 0.5);
 
-// Use with an ImageBitmap
+// Print an ImageBitmap at 100% zoom
 const bitmap = await createImageBitmap(canvas);
-console.img(bitmap);
+console.img(bitmap, 1);
 
-// Use with an Image DOM element
+// Print an Image DOM element
 const imgEl = document.getElementById('my-img');
 console.img(imgEl);
 ```

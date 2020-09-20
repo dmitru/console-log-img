@@ -8,15 +8,24 @@ declare global {
   interface Console {
     img: (
       source: string | ImageBitmap | OffscreenCanvas | HTMLCanvasElement,
-      scale?: number
+      scale?: number,
+      printDimensions?: boolean
     ) => void;
   }
 }
 
 type Dimensions = { readonly w: number; readonly h: number };
 
+type Opts = {
+  printDimension?: boolean;
+};
+
+const defaultOpts: Opts = {
+  printDimension: true,
+};
+
 /** Extends global console object with a new console.img method */
-export const initConsoleLogImg = () => {
+export const initConsoleLogImg = (opts = defaultOpts) => {
   /**
    * Display an image in the console.
    * @param  {any} source Source of the image: URI, Canvas, ImageBitmap, etc
@@ -24,6 +33,7 @@ export const initConsoleLogImg = () => {
    * @return {null}
    */
   console.img = (
+    /** Image to print */
     source:
       | string
       | ImageBitmap
@@ -31,20 +41,23 @@ export const initConsoleLogImg = () => {
       | OffscreenCanvas
       | HTMLCanvasElement
       | CanvasRenderingContext2D,
-    scale = 1
+    /** Scale factor */
+    scale = 1,
+    /** When true, prints image dimensions before the image */
+    printDimensions = opts.printDimension
   ) => {
     if (typeof source === 'string') {
-      printFromImageUri(source, scale);
+      printFromImageUri(source, scale, printDimensions);
     } else if (source instanceof HTMLImageElement) {
-      printFromImageElement(source, scale);
+      printFromImageElement(source, scale, printDimensions);
     } else if (
       source instanceof HTMLCanvasElement ||
       source instanceof OffscreenCanvas ||
       source instanceof CanvasRenderingContext2D
     ) {
-      printFromCanvas(source, scale);
+      printFromCanvas(source, scale, printDimensions);
     } else if (source instanceof ImageBitmap) {
-      printFromImageBitmap(source, scale);
+      printFromImageBitmap(source, scale, printDimensions);
     } else {
       throw new Error(
         'unsupported source type, valid types are: string, Canvas or ImageBitmap'
@@ -52,12 +65,19 @@ export const initConsoleLogImg = () => {
     }
   };
 
-  const printFromImageUri = (url: string, scale = 1) => {
+  const printFromImageUri = (
+    url: string,
+    scale = 1,
+    printDimensions = opts.printDimension
+  ) => {
     const img = new Image();
 
     img.onload = () => {
-      const dim = getImgStyle(img.width * scale, img.height * scale);
-      printFromImgStyle(url, dim);
+      const imgStyle = getImgStyle(img.width, img.height, scale);
+      if (printDimensions) {
+        printImageDimensions(imgStyle);
+      }
+      printFromImgStyle(url, imgStyle);
     };
 
     img.src = url;
@@ -69,7 +89,8 @@ export const initConsoleLogImg = () => {
    */
   const printFromCanvas = (
     source: OffscreenCanvas | HTMLCanvasElement | CanvasRenderingContext2D,
-    scale = 1
+    scale = 1,
+    printDimensions = opts.printDimension
   ) => {
     const canvas =
       source instanceof CanvasRenderingContext2D ? source.canvas : source;
@@ -87,9 +108,13 @@ export const initConsoleLogImg = () => {
     const imageUrl = c.toDataURL();
     const width = canvas.width;
     const height = canvas.height;
-    const dim = getImgStyle(width * scale, height * scale);
+    const imgStyle = getImgStyle(width, height, scale);
 
-    printFromImgStyle(imageUrl, dim);
+    if (printDimensions) {
+      printImageDimensions(imgStyle);
+    }
+
+    printFromImgStyle(imageUrl, imgStyle);
   };
 
   /**
@@ -98,23 +123,38 @@ export const initConsoleLogImg = () => {
    * @param  {int} scale Scale factor on the image
    * @return {null}
    */
-  const printFromImageBitmap = async (bitmap: ImageBitmap, scale = 1) => {
+  const printFromImageBitmap = async (
+    bitmap: ImageBitmap,
+    scale = 1,
+    printDimensions = opts.printDimension
+  ) => {
     const canvas = createCanvas({ w: bitmap.width, h: bitmap.height });
     const ctx = canvas.getContext(
       'bitmaprenderer'
     ) as ImageBitmapRenderingContext;
     const bitmap2 = await createImageBitmap(bitmap);
     ctx.transferFromImageBitmap(bitmap2);
-    console.img(ctx.canvas, scale);
+    printFromCanvas(ctx.canvas, scale, printDimensions);
   };
 
-  const printFromImageElement = async (imgEl: HTMLImageElement, scale = 1) => {
+  const printFromImageElement = async (
+    imgEl: HTMLImageElement,
+    scale = 1,
+    printDimensions = opts.printDimension
+  ) => {
     const bitmap = await createImageBitmap(imgEl);
-    printFromImageBitmap(bitmap, scale);
+    printFromImageBitmap(bitmap, scale, printDimensions);
   };
 };
 
 // Utils
+
+/** Prints original image dimensions to the console */
+const printImageDimensions = (style: ImgStyle) => {
+  console.log(
+    `Width = ${style.originalWidth}px, Height = ${style.originalHeight}px`
+  );
+};
 
 type ImgStyle = ReturnType<typeof getImgStyle>;
 
@@ -126,10 +166,13 @@ type ImgStyle = ReturnType<typeof getImgStyle>;
  * box so to speak with the unicode box characters.
  */
 
-const getImgStyle = (width: number, height: number) => {
+const getImgStyle = (width: number, height: number, scale = 1) => {
   return {
-    width,
-    height,
+    originalWidth: width,
+    originalHeight: height,
+    width: width * scale,
+    height: height * scale,
+    scale,
     string: '+',
     style:
       'font-size: 1px; padding: ' +
