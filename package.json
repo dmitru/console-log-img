@@ -1,6 +1,6 @@
 {
   "name": "console-log-img",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "author": "Dmitry Borody <dmitriy.borodiy@gmail.com>",
   "description": "console.log for images: print from URLs, Canvas or ImageBitmap to browser console",
   "main": "build/main/index.js",
