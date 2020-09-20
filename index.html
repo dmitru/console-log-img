@@ -64,7 +64,7 @@
 	<div class="row">
 		<div class="col-8 col-content">
 			<div class="tsd-panel tsd-typography">
-				<h1 align="center">Print Images and Canvases to Browser Console ⚡️</h1>
+				<h1 align="center">Print Images to Browser Console from Any Source ⚡️</h1>
 				<br>
 				<p align="center">
 					<img alt="MIT License" src="https://img.shields.io/github/license/dmitru/console-log-img"/>
@@ -75,43 +75,80 @@
 				</a>
 				<p><strong>Tiny library to print images to browser console.</strong>
 				<strong>Think <code>console.log</code> but for images!</strong></p>
-				<ul>
-					<li>zero dependencies</li>
-					<li>tiny</li>
-					<li>written in TypeScript</li>
-					<li>supports variety of image source: Canvas, 2D Context, ImageBitmap, image URIs</li>
-				</ul>
-				<p>The library extends the global <code>console</code> object with a new method:</p>
-				<pre><code class="language-typescript"><span class="hljs-built_in">console</span>.img(imageSource: <span class="hljs-built_in">string</span> | ImageBitmap | Canvas | OffscreenCanvas | CanvasRenderingContext2D, scale?: <span class="hljs-built_in">number</span>)</code></pre>
-				<a href="#use-cases" id="use-cases" style="color: inherit; text-decoration: none;">
-					<h1>Use Cases</h1>
+				<p>It makes development and debugging of canvas or image-based apps and algorithms a lot easier and more enjoyable. Really, who doesn&#39;t like images in the console? 😃</p>
+				<p>This library extends the global <code>console</code> object with a new method:</p>
+				<pre><code class="language-typescript"><span class="hljs-built_in">console</span>.img(
+  imgSource:
+    | <span class="hljs-built_in">string</span>
+    | HTMLImageElement
+    | ImageBitmap
+    | OffscreenCanvas
+    | HTMLCanvasElement
+    | CanvasRenderingContext2D,
+  scale = <span class="hljs-number">1</span>,
+  printDimensions = <span class="hljs-literal">true</span>,
+)</code></pre>
+				<a href="#features" id="features" style="color: inherit; text-decoration: none;">
+					<h3>Features</h3>
 				</a>
 				<ul>
-					<li>Simplify debugging &amp; development of canvas-based apps and algorithms</li>
+					<li>✅ supports many image source: Image elements, Canvas, 2D Context, ImageBitmap, image URIs</li>
+					<li>✅ zero dependencies</li>
+					<li>✅ it&#39;s tiny!</li>
+					<li>✅ written in TypeScript</li>
 				</ul>
+				<a href="#usage" id="usage" style="color: inherit; text-decoration: none;">
+					<h1>Usage</h1>
+				</a>
+				<pre><code class="language-typescript"><span class="hljs-keyword">import</span> { initConsoleLogImg } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;console-log-img&#x27;</span>;
+
+<span class="hljs-comment">// Run this once to initialize the library</span>
+initConsoleLogImg({
+  <span class="hljs-comment">// Optionally, disable image dimensions logging (enabled by default)</span>
+  printDimensions: <span class="hljs-literal">true</span>,
+});
+
+<span class="hljs-comment">// ... later in the code ...</span>
+
+<span class="hljs-comment">// Print an image from a URI, at original size</span>
+<span class="hljs-built_in">console</span>.img(<span class="hljs-string">&#x27;https://openclipart.org/image/800px/5661&#x27;</span>);
+
+<span class="hljs-comment">// Print a Canvas at 30% zoom, also log canvas dimensions</span>
+<span class="hljs-keyword">const</span> canvas = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">&#x27;my-canvas&#x27;</span>);
+<span class="hljs-built_in">console</span>.img(canvas, <span class="hljs-number">0.3</span>, <span class="hljs-literal">true</span>);
+
+<span class="hljs-comment">// Print a CanvasRenderingContext2D</span>
+<span class="hljs-keyword">const</span> ctx = canvas.getContext(<span class="hljs-string">&#x27;2d&#x27;</span>);
+<span class="hljs-built_in">console</span>.img(ctx, <span class="hljs-number">0.5</span>);
+
+<span class="hljs-comment">// Print an ImageBitmap at 100% zoom</span>
+<span class="hljs-keyword">const</span> bitmap = <span class="hljs-keyword">await</span> createImageBitmap(canvas);
+<span class="hljs-built_in">console</span>.img(bitmap, <span class="hljs-number">1</span>);
+
+<span class="hljs-comment">// Print an Image DOM element</span>
+<span class="hljs-keyword">const</span> imgEl = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">&#x27;my-img&#x27;</span>);
+<span class="hljs-built_in">console</span>.img(imgEl);</code></pre>
 				<a href="#install" id="install" style="color: inherit; text-decoration: none;">
 					<h1>Install</h1>
 				</a>
 				<pre><code><span class="hljs-built_in">npm</span> i --save <span class="hljs-built_in">console</span>-log-img</code></pre>
 				<p>Or with Yarn:</p>
 				<pre><code>yarn <span class="hljs-keyword">add</span><span class="bash"> console-log-img</span></code></pre>
-				<a href="#usage" id="usage" style="color: inherit; text-decoration: none;">
-					<h1>Usage</h1>
+				<a href="#acknowledges-amp-thanks" id="acknowledges-amp-thanks" style="color: inherit; text-decoration: none;">
+					<h1>Acknowledges &amp; Thanks</h1>
 				</a>
-				<pre><code class="language-typescript"><span class="hljs-keyword">import</span> { initConsoleLogImg } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;console-log-img&#x27;</span>
-
-<span class="hljs-comment">// Run this once to initialize the library</span>
-initConsoleLogImg()
-
-<span class="hljs-comment">// ... later in the code ...</span>
-
-<span class="hljs-comment">// Use with image URI:</span>
-<span class="hljs-keyword">const</span> imageUri = <span class="hljs-string">&#x27;https://openclipart.org/image/800px/5661&#x27;</span>
-<span class="hljs-built_in">console</span>.img(imageUri)
-
-<span class="hljs-comment">// Use with a Canvas at 30% zoom</span>
-<span class="hljs-keyword">const</span> canvas = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">&#x27;#my-canvas&#x27;</span>)
-<span class="hljs-built_in">console</span>.img(canvas, <span class="hljs-number">0.3</span>)</code></pre>
+				<ul>
+					<li>Source code was adapted from dunxrion/console.image</li>
+					<li>Original created by Adrian Cooney</li>
+				</ul>
+				<a href="#used-by" id="used-by" style="color: inherit; text-decoration: none;">
+					<h1>Used By</h1>
+				</a>
+				<p>Using console-log-img? Open an issue to add your company or project to this list.</p>
+				<ul>
+					<li><a href="https://inkarnate.com">Inkarnate</a></li>
+					<li><a href="https://wordcloudy.com">WordCloudy</a></li>
+				</ul>
 			</div>
 		</div>
 		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
@@ -130,11 +167,29 @@ initConsoleLogImg()
 					<li class=" tsd-kind-type-alias">
 						<a href="globals.html#dimensions" class="tsd-kind-icon">Dimensions</a>
 					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#imgstyle" class="tsd-kind-icon">Img<wbr>Style</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#opts" class="tsd-kind-icon">Opts</a>
+					</li>
 					<li class=" tsd-kind-function">
 						<a href="globals.html#createcanvas" class="tsd-kind-icon">create<wbr>Canvas</a>
 					</li>
 					<li class=" tsd-kind-function">
+						<a href="globals.html#getimgstyle" class="tsd-kind-icon">get<wbr>Img<wbr>Style</a>
+					</li>
+					<li class=" tsd-kind-function">
 						<a href="globals.html#initconsolelogimg" class="tsd-kind-icon">init<wbr>Console<wbr>Log<wbr>Img</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#printfromimgstyle" class="tsd-kind-icon">print<wbr>From<wbr>Img<wbr>Style</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#printimagedimensions" class="tsd-kind-icon">print<wbr>Image<wbr>Dimensions</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#defaultopts" class="tsd-kind-icon">default<wbr>Opts</a>
 					</li>
 				</ul>
 			</nav>

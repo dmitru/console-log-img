@@ -77,13 +77,24 @@
 							<h3>Type aliases</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-type-alias"><a href="globals.html#dimensions" class="tsd-kind-icon">Dimensions</a></li>
+								<li class="tsd-kind-type-alias"><a href="globals.html#imgstyle" class="tsd-kind-icon">Img<wbr>Style</a></li>
+								<li class="tsd-kind-type-alias"><a href="globals.html#opts" class="tsd-kind-icon">Opts</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
 							<h3>Functions</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-function"><a href="globals.html#createcanvas" class="tsd-kind-icon">create<wbr>Canvas</a></li>
+								<li class="tsd-kind-function"><a href="globals.html#getimgstyle" class="tsd-kind-icon">get<wbr>Img<wbr>Style</a></li>
 								<li class="tsd-kind-function"><a href="globals.html#initconsolelogimg" class="tsd-kind-icon">init<wbr>Console<wbr>Log<wbr>Img</a></li>
+								<li class="tsd-kind-function"><a href="globals.html#printfromimgstyle" class="tsd-kind-icon">print<wbr>From<wbr>Img<wbr>Style</a></li>
+								<li class="tsd-kind-function"><a href="globals.html#printimagedimensions" class="tsd-kind-icon">print<wbr>Image<wbr>Dimensions</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section ">
+							<h3>Object literals</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-object-literal"><a href="globals.html#defaultopts" class="tsd-kind-icon">default<wbr>Opts</a></li>
 							</ul>
 						</section>
 					</div>
@@ -97,7 +108,7 @@
 					<div class="tsd-signature tsd-kind-icon">Dimensions<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{ </span>h<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">; </span>w<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> }</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/dmitru/console-log-img/blob/b182b10/src/lib/console-extensions.ts#L11">lib/console-extensions.ts:11</a></li>
+							<li>Defined in <a href="https://github.com/dmitru/console-log-img/blob/07976bc/src/lib/console-extensions.ts#L17">lib/console-extensions.ts:17</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -108,6 +119,34 @@
 							</li>
 							<li class="tsd-parameter">
 								<h5><span class="tsd-flag ts-flagReadonly">Readonly</span> w<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></h5>
+							</li>
+						</ul>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-type-alias">
+					<a name="imgstyle" class="tsd-anchor"></a>
+					<h3>Img<wbr>Style</h3>
+					<div class="tsd-signature tsd-kind-icon">Img<wbr>Style<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">ReturnType</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-symbol">typeof </span><a href="globals.html#getimgstyle" class="tsd-signature-type">getImgStyle</a><span class="tsd-signature-symbol">&gt;</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/dmitru/console-log-img/blob/07976bc/src/lib/console-extensions.ts#L159">lib/console-extensions.ts:159</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-type-alias">
+					<a name="opts" class="tsd-anchor"></a>
+					<h3>Opts</h3>
+					<div class="tsd-signature tsd-kind-icon">Opts<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{ </span>printDimension<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> }</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/dmitru/console-log-img/blob/07976bc/src/lib/console-extensions.ts#L19">lib/console-extensions.ts:19</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter">
+								<h5><span class="tsd-flag ts-flagOptional">Optional</span> print<wbr>Dimension<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span></h5>
 							</li>
 						</ul>
 					</div>
@@ -125,7 +164,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/dmitru/console-log-img/blob/b182b10/src/lib/console-extensions.ts#L142">lib/console-extensions.ts:142</a></li>
+									<li>Defined in <a href="https://github.com/dmitru/console-log-img/blob/07976bc/src/lib/console-extensions.ts#L202">lib/console-extensions.ts:202</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -142,33 +181,170 @@
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-function">
-					<a name="initconsolelogimg" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagConst">Const</span> init<wbr>Console<wbr>Log<wbr>Img</h3>
+					<a name="getimgstyle" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> get<wbr>Img<wbr>Style</h3>
 					<ul class="tsd-signatures tsd-kind-function">
-						<li class="tsd-signature tsd-kind-icon">init<wbr>Console<wbr>Log<wbr>Img<span class="tsd-signature-symbol">(</span>console<span class="tsd-signature-symbol">: </span><a href="interfaces/__global.console.html" class="tsd-signature-type">Console</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Img<wbr>Style<span class="tsd-signature-symbol">(</span>width<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, height<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, scale<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{ </span>height<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">; </span>originalHeight<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">; </span>originalWidth<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">; </span>scale<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">; </span>string<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>style<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>width<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> }</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/dmitru/console-log-img/blob/b182b10/src/lib/console-extensions.ts#L17">lib/console-extensions.ts:17</a></li>
+									<li>Defined in <a href="https://github.com/dmitru/console-log-img/blob/07976bc/src/lib/console-extensions.ts#L169">lib/console-extensions.ts:169</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Adapted from dunxrion/console.image
-									Original created by Adrian Cooney</p>
+									<p>Since the console.log doesn&#39;t respond to the <code>display</code> style,
+										setting a width and height has no effect. In fact, the only styles
+										I&#39;ve found it responds to is font-size, background-image and color.
+										To combat the image repeating, we have to get a create a font bounding
+									box so to speak with the unicode box characters.</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>console: <a href="interfaces/__global.console.html" class="tsd-signature-type">Console</a></h5>
+									<h5>width: <span class="tsd-signature-type">number</span></h5>
+								</li>
+								<li>
+									<h5>height: <span class="tsd-signature-type">number</span></h5>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> scale: <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> = 1</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-symbol">{ </span>height<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">; </span>originalHeight<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">; </span>originalWidth<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">; </span>scale<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">; </span>string<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>style<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>width<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> }</span></h4>
+							<ul class="tsd-parameters">
+								<li class="tsd-parameter">
+									<h5>height<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></h5>
+								</li>
+								<li class="tsd-parameter">
+									<h5>original<wbr>Height<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></h5>
+								</li>
+								<li class="tsd-parameter">
+									<h5>original<wbr>Width<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></h5>
+								</li>
+								<li class="tsd-parameter">
+									<h5>scale<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></h5>
+								</li>
+								<li class="tsd-parameter">
+									<h5>string<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></h5>
+								</li>
+								<li class="tsd-parameter">
+									<h5>style<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></h5>
+								</li>
+								<li class="tsd-parameter">
+									<h5>width<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></h5>
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function">
+					<a name="initconsolelogimg" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> init<wbr>Console<wbr>Log<wbr>Img</h3>
+					<ul class="tsd-signatures tsd-kind-function">
+						<li class="tsd-signature tsd-kind-icon">init<wbr>Console<wbr>Log<wbr>Img<span class="tsd-signature-symbol">(</span>opts<span class="tsd-signature-symbol">?: </span><a href="globals.html#opts" class="tsd-signature-type">Opts</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/dmitru/console-log-img/blob/07976bc/src/lib/console-extensions.ts#L28">lib/console-extensions.ts:28</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Extends global console object with a new console.img method</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> opts: <a href="globals.html#opts" class="tsd-signature-type">Opts</a><span class="tsd-signature-symbol"> = defaultOpts</span></h5>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 						</li>
 					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function">
+					<a name="printfromimgstyle" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> print<wbr>From<wbr>Img<wbr>Style</h3>
+					<ul class="tsd-signatures tsd-kind-function">
+						<li class="tsd-signature tsd-kind-icon">print<wbr>From<wbr>Img<wbr>Style<span class="tsd-signature-symbol">(</span>imgUrl<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, style<span class="tsd-signature-symbol">: </span><a href="globals.html#imgstyle" class="tsd-signature-type">ImgStyle</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/dmitru/console-log-img/blob/07976bc/src/lib/console-extensions.ts#L188">lib/console-extensions.ts:188</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>imgUrl: <span class="tsd-signature-type">string</span></h5>
+								</li>
+								<li>
+									<h5>style: <a href="globals.html#imgstyle" class="tsd-signature-type">ImgStyle</a></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function">
+					<a name="printimagedimensions" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> print<wbr>Image<wbr>Dimensions</h3>
+					<ul class="tsd-signatures tsd-kind-function">
+						<li class="tsd-signature tsd-kind-icon">print<wbr>Image<wbr>Dimensions<span class="tsd-signature-symbol">(</span>style<span class="tsd-signature-symbol">: </span><a href="globals.html#imgstyle" class="tsd-signature-type">ImgStyle</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/dmitru/console-log-img/blob/07976bc/src/lib/console-extensions.ts#L153">lib/console-extensions.ts:153</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Prints original image dimensions to the console</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>style: <a href="globals.html#imgstyle" class="tsd-signature-type">ImgStyle</a></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Object literals</h2>
+				<section class="tsd-panel tsd-member tsd-kind-object-literal">
+					<a name="defaultopts" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> default<wbr>Opts</h3>
+					<div class="tsd-signature tsd-kind-icon">default<wbr>Opts<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/dmitru/console-log-img/blob/07976bc/src/lib/console-extensions.ts#L23">lib/console-extensions.ts:23</a></li>
+						</ul>
+					</aside>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+						<a name="defaultopts.printdimension" class="tsd-anchor"></a>
+						<h3>print<wbr>Dimension</h3>
+						<div class="tsd-signature tsd-kind-icon">print<wbr>Dimension<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">true</span><span class="tsd-signature-symbol"> = true</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/dmitru/console-log-img/blob/07976bc/src/lib/console-extensions.ts#L24">lib/console-extensions.ts:24</a></li>
+							</ul>
+						</aside>
+					</section>
 				</section>
 			</section>
 		</div>
@@ -188,11 +364,29 @@
 					<li class=" tsd-kind-type-alias">
 						<a href="globals.html#dimensions" class="tsd-kind-icon">Dimensions</a>
 					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#imgstyle" class="tsd-kind-icon">Img<wbr>Style</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#opts" class="tsd-kind-icon">Opts</a>
+					</li>
 					<li class=" tsd-kind-function">
 						<a href="globals.html#createcanvas" class="tsd-kind-icon">create<wbr>Canvas</a>
 					</li>
 					<li class=" tsd-kind-function">
+						<a href="globals.html#getimgstyle" class="tsd-kind-icon">get<wbr>Img<wbr>Style</a>
+					</li>
+					<li class=" tsd-kind-function">
 						<a href="globals.html#initconsolelogimg" class="tsd-kind-icon">init<wbr>Console<wbr>Log<wbr>Img</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#printfromimgstyle" class="tsd-kind-icon">print<wbr>From<wbr>Img<wbr>Style</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#printimagedimensions" class="tsd-kind-icon">print<wbr>Image<wbr>Dimensions</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#defaultopts" class="tsd-kind-icon">default<wbr>Opts</a>
 					</li>
 				</ul>
 			</nav>
