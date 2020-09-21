@@ -13,7 +13,11 @@
 
 [VIEW DEMO](https://codesandbox.io/s/console-log-img-test-bti64)
 
-It makes development and debugging of canvas or image-based apps and algorithms a lot easier and more enjoyable. Really, who doesn't like images in the console? 😃
+### Use-cases
+
+- to make development and debugging of canvas or image-based apps and algorithms easier and more enjoyable.
+- to show console banners, e.g. for hiring or prevent social engineering fraud.
+- for fun! Really, who doesn't like images in the console? 😃
 
 This library extends the global `console` object with a new method:
 
