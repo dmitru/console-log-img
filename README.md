@@ -87,7 +87,7 @@ Or with Yarn:
 yarn add console-log-img
 ```
 
-# Acknowledges & Thanks
+# Acknowledgements & Thanks
 
 - Source code was adapted from dunxrion/console.image
 - Original created by Adrian Cooney
