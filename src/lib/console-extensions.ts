@@ -176,9 +176,9 @@ const getImgStyle = (width: number, height: number, scale = 1) => {
     string: '+',
     style:
       'font-size: 1px; padding: ' +
-      Math.floor(height / 2) +
+      Math.floor((height * scale) / 2) +
       'px ' +
-      Math.floor(width / 2) +
+      Math.floor((width * scale) / 2) +
       'px; line-height: ' +
       height +
       'px;',
