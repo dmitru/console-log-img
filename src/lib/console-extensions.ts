@@ -180,7 +180,7 @@ const getImgStyle = (width: number, height: number, scale = 1) => {
       'px ' +
       Math.floor((width * scale) / 2) +
       'px; line-height: ' +
-      height +
+      height * scale +
       'px;',
   }
 }
