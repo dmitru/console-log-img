@@ -1,11 +1,10 @@
 <h1 align="center">Print Images to Browser Console from Any Source ⚡️</h1>
-
-<br>
-
 <p align="center">
   <img alt="MIT License" src="https://img.shields.io/github/license/dmitru/console-log-img"/>
 </p>
-<br />
+<br/>
+
+<a href="https://imgur.com/06122Fq"><img src="https://i.imgur.com/06122Fq.gif" title="source: imgur.com" /></a>
 
 # What is it
 
