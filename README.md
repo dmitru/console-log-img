@@ -23,10 +23,11 @@ console.img(
   imgSource:
     | string
     | HTMLImageElement
-    | ImageBitmap
     | OffscreenCanvas
+    | ImageBitmap
     | HTMLCanvasElement
-    | CanvasRenderingContext2D,
+    | CanvasRenderingContext2D
+    | OffscreenCanvasRenderingContext2D
   scale = 1,
   printDimensions = true,
 )
@@ -34,7 +35,8 @@ console.img(
 
 ### Features
 
-- ✅ supports many image source types: Canvas, Image elements, ImageBitmap, image URIs
+- ✅ supports many image source types: HTMLCanvasElement, OffscreenCanvas, Image elements, ImageBitmap, image URIs
+- ✅ works in WebWorkers with OffscreenCanvas
 - ✅ zero dependencies
 - ✅ it's tiny!
 - ✅ written in TypeScript
