@@ -7,7 +7,14 @@
 declare global {
   interface Console {
     img: (
-      source: string | ImageBitmap | OffscreenCanvas | HTMLCanvasElement,
+      source:
+        | string
+        | ImageBitmap
+        | HTMLImageElement
+        | OffscreenCanvas
+        | HTMLCanvasElement
+        | CanvasRenderingContext2D
+        | OffscreenCanvasRenderingContext2D,
       scale?: number,
       printDimensions?: boolean
     ) => void
@@ -46,18 +53,16 @@ export const initConsoleLogImg = (opts = defaultOpts) => {
     /** When true, prints image dimensions before the image */
     printDimensions = opts.printDimension
   ) => {
-    if (typeof source === 'string') {
-      printFromImageUri(source, scale, printDimensions)
-    } else if (source instanceof HTMLImageElement) {
-      printFromImageElement(source, scale, printDimensions)
-    } else if (
-      source instanceof HTMLCanvasElement ||
-      source instanceof OffscreenCanvas ||
-      source instanceof CanvasRenderingContext2D
-    ) {
+    if (source instanceof OffscreenCanvas || source instanceof CanvasRenderingContext2D) {
       printFromCanvas(source, scale, printDimensions)
     } else if (source instanceof ImageBitmap) {
       printFromImageBitmap(source, scale, printDimensions)
+    } else if (typeof source === 'string') {
+      printFromImageUri(source, scale, printDimensions)
+    } else if (source instanceof HTMLImageElement) {
+      printFromImageElement(source, scale, printDimensions)
+    } else if (source instanceof HTMLCanvasElement) {
+      printFromCanvas(source, scale, printDimensions)
     } else {
       throw new Error(
         'unsupported source type, valid types are: string, Canvas or ImageBitmap'
@@ -95,26 +100,42 @@ export const initConsoleLogImg = (opts = defaultOpts) => {
     const canvas =
       source instanceof CanvasRenderingContext2D ? source.canvas : source
 
-    let c: HTMLCanvasElement | undefined
-    if ((canvas as HTMLCanvasElement).toDataURL) {
-      // It's not an OffscreenCanvas
-      c = canvas as HTMLCanvasElement
+    const newW = canvas.width * scale
+    const newH = canvas.width * scale
+
+    let dataUriPromise: Promise<string>
+
+    if (canvas instanceof OffscreenCanvas) {
+      const canvasScaled = createOffscreenCanvas({ w: newW, h: newH }) as OffscreenCanvas
+      const canvasScaledCtx = canvasScaled.getContext('2d')
+      canvasScaledCtx.drawImage(canvas, 0, 0, canvas.width, canvas.height, 0, 0, newW, newH)
+
+      dataUriPromise = new Promise<string>(resolve => canvasScaled.convertToBlob().then(blob => {
+        const reader = new FileReader()
+        reader.readAsDataURL(blob);
+        reader.addEventListener("load", () => {
+          resolve(reader.result as string);
+        }, false);
+      }))
     } else {
-      const c2 = createCanvas({ w: canvas.width, h: canvas.height })
-      const c2Ctx = c2.getContext('2d')
-      c2Ctx.drawImage(canvas, 0, 0)
-      c = c2
-    }
-    const imageUrl = c.toDataURL()
-    const width = canvas.width
-    const height = canvas.height
-    const imgStyle = getImgStyle(width, height, scale)
+      const canvasScaled = createCanvas({ w: newW, h: newH })
+      const canvasScaledCtx = canvasScaled.getContext('2d')
+      canvasScaledCtx.drawImage(canvas, 0, 0, canvas.width, canvas.height, 0, 0, newW, newH)
 
-    if (printDimensions) {
-      printImageDimensions(imgStyle)
+      dataUriPromise = Promise.resolve(canvasScaled.toDataURL())
     }
 
-    printFromImgStyle(imageUrl, imgStyle)
+    dataUriPromise.then(imageUrl => {
+      const width = canvas.width
+      const height = canvas.height
+      const imgStyle = getImgStyle(width, height, scale)
+
+      if (printDimensions) {
+        printImageDimensions(imgStyle)
+      }
+
+      printFromImgStyle(imageUrl, imgStyle)
+    })
   }
 
   /**
@@ -189,15 +210,38 @@ const printFromImgStyle = (imgUrl: string, style: ImgStyle) => {
   console.log(
     '%c' + style.string,
     style.style +
-      'background-image: url(' +
-      imgUrl +
-      '); background-size: ' +
-      style.width +
-      'px ' +
-      style.height +
-      'px; background-size: 100% 100%; background-repeat: norepeat; color: transparent;'
+    'background-image: url(' +
+    imgUrl +
+    '); background-size: ' +
+    style.width +
+    'px ' +
+    style.height +
+    'px; background-size: 100% 100%; background-repeat: norepeat; color: transparent;'
   )
 }
+
+const createOffscreenCanvas = (
+  size: Dimensions
+): HTMLCanvasElement | OffscreenCanvas => {
+  let canvas;
+  // @ts-ignore
+  if (
+    typeof window === "undefined" ||
+    typeof window.OffscreenCanvas !== "undefined"
+  ) {
+    // @ts-ignore
+    canvas = new OffscreenCanvas(size.w, size.h);
+  } else {
+    // Offscreen canvas isn't supported: fall back to HTML Canvas
+    canvas = document.createElement("canvas");
+    canvas.style.display = "none";
+  }
+
+  canvas.width = size.w;
+  canvas.height = size.h;
+
+  return canvas;
+};
 
 const createCanvas = (size: Dimensions, elemId?: string): HTMLCanvasElement => {
   const canvas = document.createElement('canvas') as HTMLCanvasElement
