@@ -8,18 +8,15 @@
 
 # What is it
 
-**Tiny library to print images to browser console.**
-**Think `console.log` but for images!**
+It extends `window.console` to allow you print Canvases and images from various sources.
 
 [VIEW DEMO](https://codesandbox.io/s/console-log-img-test-bti64)
 
 ### Use-cases
 
-- to make development and debugging of canvas or image-based apps and algorithms easier and more enjoyable.
-- to show console banners, e.g. for hiring or prevent social engineering fraud.
-- for fun! Really, who doesn't like images in the console? 😃
+To help develop visual algorithms: generative design and art, image processing, etc.
 
-This library extends the global `console` object with a new method:
+This library extends the global `console` object with a new method to print an image from one of the many supported sources:
 
 ```typescript
 console.img(
@@ -37,7 +34,7 @@ console.img(
 
 ### Features
 
-- ✅ supports many image source: Image elements, Canvas, 2D Context, ImageBitmap, image URIs
+- ✅ supports many image source types: Canvas, Image elements, ImageBitmap, image URIs
 - ✅ zero dependencies
 - ✅ it's tiny!
 - ✅ written in TypeScript
@@ -97,4 +94,3 @@ yarn add console-log-img
 Using console-log-img? Open an issue to add your company or project to this list.
 
 - [Inkarnate](https://inkarnate.com)
-- [WordCloudy](https://wordcloudy.com)
