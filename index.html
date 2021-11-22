@@ -65,27 +65,30 @@
 		<div class="col-8 col-content">
 			<div class="tsd-panel tsd-typography">
 				<h1 align="center">Print Images to Browser Console from Any Source ⚡️</h1>
-				<br>
 				<p align="center">
 					<img alt="MIT License" src="https://img.shields.io/github/license/dmitru/console-log-img"/>
 				</p>
-				<br />
+				<br/>
+				<p><a href="https://imgur.com/06122Fq"><img src="https://i.imgur.com/06122Fq.gif" title="source: imgur.com" /></a></p>
 				<a href="#what-is-it" id="what-is-it" style="color: inherit; text-decoration: none;">
 					<h1>What is it</h1>
 				</a>
-				<p><strong>Tiny library to print images to browser console.</strong>
-				<strong>Think <code>console.log</code> but for images!</strong></p>
+				<p>It extends <code>window.console</code> to allow you print Canvases and images from various sources.</p>
 				<p><a href="https://codesandbox.io/s/console-log-img-test-bti64">VIEW DEMO</a></p>
-				<p>It makes development and debugging of canvas or image-based apps and algorithms a lot easier and more enjoyable. Really, who doesn&#39;t like images in the console? 😃</p>
-				<p>This library extends the global <code>console</code> object with a new method:</p>
+				<a href="#use-cases" id="use-cases" style="color: inherit; text-decoration: none;">
+					<h3>Use-cases</h3>
+				</a>
+				<p>To help develop visual algorithms: generative design and art, image processing, etc.</p>
+				<p>This library extends the global <code>console</code> object with a new method to print an image from one of the many supported sources:</p>
 				<pre><code class="language-typescript"><span class="hljs-built_in">console</span>.img(
   imgSource:
     | <span class="hljs-built_in">string</span>
     | HTMLImageElement
-    | ImageBitmap
     | OffscreenCanvas
+    | ImageBitmap
     | HTMLCanvasElement
-    | CanvasRenderingContext2D,
+    | CanvasRenderingContext2D
+    | OffscreenCanvasRenderingContext2D
   scale = <span class="hljs-number">1</span>,
   printDimensions = <span class="hljs-literal">true</span>,
 )</code></pre>
@@ -93,7 +96,8 @@
 					<h3>Features</h3>
 				</a>
 				<ul>
-					<li>✅ supports many image source: Image elements, Canvas, 2D Context, ImageBitmap, image URIs</li>
+					<li>✅ supports many image source types: HTMLCanvasElement, OffscreenCanvas, Image elements, ImageBitmap, image URIs</li>
+					<li>✅ works in WebWorkers with OffscreenCanvas</li>
 					<li>✅ zero dependencies</li>
 					<li>✅ it&#39;s tiny!</li>
 					<li>✅ written in TypeScript</li>
@@ -135,8 +139,8 @@ initConsoleLogImg({
 				<pre><code><span class="hljs-built_in">npm</span> i --save <span class="hljs-built_in">console</span>-log-img</code></pre>
 				<p>Or with Yarn:</p>
 				<pre><code>yarn <span class="hljs-keyword">add</span><span class="bash"> console-log-img</span></code></pre>
-				<a href="#acknowledges-amp-thanks" id="acknowledges-amp-thanks" style="color: inherit; text-decoration: none;">
-					<h1>Acknowledges &amp; Thanks</h1>
+				<a href="#acknowledgements-amp-thanks" id="acknowledgements-amp-thanks" style="color: inherit; text-decoration: none;">
+					<h1>Acknowledgements &amp; Thanks</h1>
 				</a>
 				<ul>
 					<li>Source code was adapted from dunxrion/console.image</li>
@@ -148,7 +152,6 @@ initConsoleLogImg({
 				<p>Using console-log-img? Open an issue to add your company or project to this list.</p>
 				<ul>
 					<li><a href="https://inkarnate.com">Inkarnate</a></li>
-					<li><a href="https://wordcloudy.com">WordCloudy</a></li>
 				</ul>
 			</div>
 		</div>
@@ -176,6 +179,9 @@ initConsoleLogImg({
 					</li>
 					<li class=" tsd-kind-function">
 						<a href="globals.html#createcanvas" class="tsd-kind-icon">create<wbr>Canvas</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#createoffscreencanvas" class="tsd-kind-icon">create<wbr>Offscreen<wbr>Canvas</a>
 					</li>
 					<li class=" tsd-kind-function">
 						<a href="globals.html#getimgstyle" class="tsd-kind-icon">get<wbr>Img<wbr>Style</a>

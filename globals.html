@@ -85,6 +85,7 @@
 							<h3>Functions</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-function"><a href="globals.html#createcanvas" class="tsd-kind-icon">create<wbr>Canvas</a></li>
+								<li class="tsd-kind-function"><a href="globals.html#createoffscreencanvas" class="tsd-kind-icon">create<wbr>Offscreen<wbr>Canvas</a></li>
 								<li class="tsd-kind-function"><a href="globals.html#getimgstyle" class="tsd-kind-icon">get<wbr>Img<wbr>Style</a></li>
 								<li class="tsd-kind-function"><a href="globals.html#initconsolelogimg" class="tsd-kind-icon">init<wbr>Console<wbr>Log<wbr>Img</a></li>
 								<li class="tsd-kind-function"><a href="globals.html#printfromimgstyle" class="tsd-kind-icon">print<wbr>From<wbr>Img<wbr>Style</a></li>
@@ -108,7 +109,7 @@
 					<div class="tsd-signature tsd-kind-icon">Dimensions<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{ </span>h<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">; </span>w<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> }</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/dmitru/console-log-img/blob/3183a00/src/lib/console-extensions.ts#L17">lib/console-extensions.ts:17</a></li>
+							<li>Defined in <a href="https://github.com/dmitru/console-log-img/blob/5287a32/src/lib/console-extensions.ts#L25">lib/console-extensions.ts:25</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -129,7 +130,7 @@
 					<div class="tsd-signature tsd-kind-icon">Img<wbr>Style<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">ReturnType</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-symbol">typeof </span><a href="globals.html#getimgstyle" class="tsd-signature-type">getImgStyle</a><span class="tsd-signature-symbol">&gt;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/dmitru/console-log-img/blob/3183a00/src/lib/console-extensions.ts#L159">lib/console-extensions.ts:159</a></li>
+							<li>Defined in <a href="https://github.com/dmitru/console-log-img/blob/5287a32/src/lib/console-extensions.ts#L225">lib/console-extensions.ts:225</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -139,7 +140,7 @@
 					<div class="tsd-signature tsd-kind-icon">Opts<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{ </span>printDimension<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> }</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/dmitru/console-log-img/blob/3183a00/src/lib/console-extensions.ts#L19">lib/console-extensions.ts:19</a></li>
+							<li>Defined in <a href="https://github.com/dmitru/console-log-img/blob/5287a32/src/lib/console-extensions.ts#L27">lib/console-extensions.ts:27</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -164,7 +165,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/dmitru/console-log-img/blob/3183a00/src/lib/console-extensions.ts#L202">lib/console-extensions.ts:202</a></li>
+									<li>Defined in <a href="https://github.com/dmitru/console-log-img/blob/5287a32/src/lib/console-extensions.ts#L291">lib/console-extensions.ts:291</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -181,6 +182,29 @@
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-function">
+					<a name="createoffscreencanvas" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> create<wbr>Offscreen<wbr>Canvas</h3>
+					<ul class="tsd-signatures tsd-kind-function">
+						<li class="tsd-signature tsd-kind-icon">create<wbr>Offscreen<wbr>Canvas<span class="tsd-signature-symbol">(</span>size<span class="tsd-signature-symbol">: </span><a href="globals.html#dimensions" class="tsd-signature-type">Dimensions</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">HTMLCanvasElement</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">OffscreenCanvas</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/dmitru/console-log-img/blob/5287a32/src/lib/console-extensions.ts#L268">lib/console-extensions.ts:268</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>size: <a href="globals.html#dimensions" class="tsd-signature-type">Dimensions</a></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">HTMLCanvasElement</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">OffscreenCanvas</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function">
 					<a name="getimgstyle" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagConst">Const</span> get<wbr>Img<wbr>Style</h3>
 					<ul class="tsd-signatures tsd-kind-function">
@@ -190,7 +214,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/dmitru/console-log-img/blob/3183a00/src/lib/console-extensions.ts#L169">lib/console-extensions.ts:169</a></li>
+									<li>Defined in <a href="https://github.com/dmitru/console-log-img/blob/5287a32/src/lib/console-extensions.ts#L235">lib/console-extensions.ts:235</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -251,7 +275,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/dmitru/console-log-img/blob/3183a00/src/lib/console-extensions.ts#L28">lib/console-extensions.ts:28</a></li>
+									<li>Defined in <a href="https://github.com/dmitru/console-log-img/blob/5287a32/src/lib/console-extensions.ts#L36">lib/console-extensions.ts:36</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -279,7 +303,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/dmitru/console-log-img/blob/3183a00/src/lib/console-extensions.ts#L188">lib/console-extensions.ts:188</a></li>
+									<li>Defined in <a href="https://github.com/dmitru/console-log-img/blob/5287a32/src/lib/console-extensions.ts#L254">lib/console-extensions.ts:254</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -305,7 +329,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/dmitru/console-log-img/blob/3183a00/src/lib/console-extensions.ts#L153">lib/console-extensions.ts:153</a></li>
+									<li>Defined in <a href="https://github.com/dmitru/console-log-img/blob/5287a32/src/lib/console-extensions.ts#L219">lib/console-extensions.ts:219</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -332,7 +356,7 @@
 					<div class="tsd-signature tsd-kind-icon">default<wbr>Opts<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/dmitru/console-log-img/blob/3183a00/src/lib/console-extensions.ts#L23">lib/console-extensions.ts:23</a></li>
+							<li>Defined in <a href="https://github.com/dmitru/console-log-img/blob/5287a32/src/lib/console-extensions.ts#L31">lib/console-extensions.ts:31</a></li>
 						</ul>
 					</aside>
 					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
@@ -341,7 +365,7 @@
 						<div class="tsd-signature tsd-kind-icon">print<wbr>Dimension<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">true</span><span class="tsd-signature-symbol"> = true</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/dmitru/console-log-img/blob/3183a00/src/lib/console-extensions.ts#L24">lib/console-extensions.ts:24</a></li>
+								<li>Defined in <a href="https://github.com/dmitru/console-log-img/blob/5287a32/src/lib/console-extensions.ts#L32">lib/console-extensions.ts:32</a></li>
 							</ul>
 						</aside>
 					</section>
@@ -372,6 +396,9 @@
 					</li>
 					<li class=" tsd-kind-function">
 						<a href="globals.html#createcanvas" class="tsd-kind-icon">create<wbr>Canvas</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#createoffscreencanvas" class="tsd-kind-icon">create<wbr>Offscreen<wbr>Canvas</a>
 					</li>
 					<li class=" tsd-kind-function">
 						<a href="globals.html#getimgstyle" class="tsd-kind-icon">get<wbr>Img<wbr>Style</a>
