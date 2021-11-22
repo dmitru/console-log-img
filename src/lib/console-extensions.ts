@@ -16,7 +16,8 @@ declare global {
         | CanvasRenderingContext2D
         | OffscreenCanvasRenderingContext2D,
       scale?: number,
-      printDimensions?: boolean
+      printDimensions?: boolean,
+      ...args: any[]
     ) => void
   }
 }
@@ -51,18 +52,23 @@ export const initConsoleLogImg = (opts = defaultOpts) => {
     /** Scale factor */
     scale = 1,
     /** When true, prints image dimensions before the image */
-    printDimensions = opts.printDimension
+    printDimensions = opts.printDimension,
+    /** Extra arguments to be printed before printing the image */
+    ...args: any[]
   ) => {
-    if (source instanceof OffscreenCanvas || source instanceof CanvasRenderingContext2D) {
-      printFromCanvas(source, scale, printDimensions)
+    if (
+      source instanceof OffscreenCanvas ||
+      source instanceof CanvasRenderingContext2D
+    ) {
+      printFromCanvas(source, scale, printDimensions, ...args)
     } else if (source instanceof ImageBitmap) {
-      printFromImageBitmap(source, scale, printDimensions)
+      printFromImageBitmap(source, scale, printDimensions, ...args)
     } else if (typeof source === 'string') {
-      printFromImageUri(source, scale, printDimensions)
+      printFromImageUri(source, scale, printDimensions, ...args)
     } else if (source instanceof HTMLImageElement) {
-      printFromImageElement(source, scale, printDimensions)
+      printFromImageElement(source, scale, printDimensions, ...args)
     } else if (source instanceof HTMLCanvasElement) {
-      printFromCanvas(source, scale, printDimensions)
+      printFromCanvas(source, scale, printDimensions, args)
     } else {
       throw new Error(
         'unsupported source type, valid types are: string, Canvas or ImageBitmap'
@@ -73,7 +79,8 @@ export const initConsoleLogImg = (opts = defaultOpts) => {
   const printFromImageUri = (
     url: string,
     scale = 1,
-    printDimensions = opts.printDimension
+    printDimensions = opts.printDimension,
+    ...args: any[]
   ) => {
     const img = new Image()
 
@@ -81,6 +88,9 @@ export const initConsoleLogImg = (opts = defaultOpts) => {
       const imgStyle = getImgStyle(img.width, img.height, scale)
       if (printDimensions) {
         printImageDimensions(imgStyle)
+      }
+      if (args.length > 0) {
+        console.log(...args)
       }
       printFromImgStyle(url, imgStyle)
     }
@@ -95,7 +105,8 @@ export const initConsoleLogImg = (opts = defaultOpts) => {
   const printFromCanvas = (
     source: OffscreenCanvas | HTMLCanvasElement | CanvasRenderingContext2D,
     scale = 1,
-    printDimensions = opts.printDimension
+    printDimensions = opts.printDimension,
+    ...args: any[]
   ) => {
     const canvas =
       source instanceof CanvasRenderingContext2D ? source.canvas : source
@@ -106,32 +117,64 @@ export const initConsoleLogImg = (opts = defaultOpts) => {
     let dataUriPromise: Promise<string>
 
     if (canvas instanceof OffscreenCanvas) {
-      const canvasScaled = createOffscreenCanvas({ w: newW, h: newH }) as OffscreenCanvas
+      const canvasScaled = createOffscreenCanvas({
+        w: newW,
+        h: newH,
+      }) as OffscreenCanvas
       const canvasScaledCtx = canvasScaled.getContext('2d')
-      canvasScaledCtx.drawImage(canvas, 0, 0, canvas.width, canvas.height, 0, 0, newW, newH)
+      canvasScaledCtx.drawImage(
+        canvas,
+        0,
+        0,
+        canvas.width,
+        canvas.height,
+        0,
+        0,
+        newW,
+        newH
+      )
 
-      dataUriPromise = new Promise<string>(resolve => canvasScaled.convertToBlob().then(blob => {
-        const reader = new FileReader()
-        reader.readAsDataURL(blob);
-        reader.addEventListener("load", () => {
-          resolve(reader.result as string);
-        }, false);
-      }))
+      dataUriPromise = new Promise<string>((resolve) =>
+        canvasScaled.convertToBlob().then((blob) => {
+          const reader = new FileReader()
+          reader.readAsDataURL(blob)
+          reader.addEventListener(
+            'load',
+            () => {
+              resolve(reader.result as string)
+            },
+            false
+          )
+        })
+      )
     } else {
       const canvasScaled = createCanvas({ w: newW, h: newH })
       const canvasScaledCtx = canvasScaled.getContext('2d')
-      canvasScaledCtx.drawImage(canvas, 0, 0, canvas.width, canvas.height, 0, 0, newW, newH)
+      canvasScaledCtx.drawImage(
+        canvas,
+        0,
+        0,
+        canvas.width,
+        canvas.height,
+        0,
+        0,
+        newW,
+        newH
+      )
 
       dataUriPromise = Promise.resolve(canvasScaled.toDataURL())
     }
 
-    dataUriPromise.then(imageUrl => {
+    dataUriPromise.then((imageUrl) => {
       const width = canvas.width
       const height = canvas.height
       const imgStyle = getImgStyle(width, height, scale)
 
       if (printDimensions) {
         printImageDimensions(imgStyle)
+      }
+      if (args.length > 0) {
+        console.log(...args)
       }
 
       printFromImgStyle(imageUrl, imgStyle)
@@ -147,7 +190,8 @@ export const initConsoleLogImg = (opts = defaultOpts) => {
   const printFromImageBitmap = async (
     bitmap: ImageBitmap,
     scale = 1,
-    printDimensions = opts.printDimension
+    printDimensions = opts.printDimension,
+    ...args: any[]
   ) => {
     const canvas = createCanvas({ w: bitmap.width, h: bitmap.height })
     const ctx = canvas.getContext(
@@ -155,16 +199,17 @@ export const initConsoleLogImg = (opts = defaultOpts) => {
     ) as ImageBitmapRenderingContext
     const bitmap2 = await createImageBitmap(bitmap)
     ctx.transferFromImageBitmap(bitmap2)
-    printFromCanvas(ctx.canvas, scale, printDimensions)
+    printFromCanvas(ctx.canvas, scale, printDimensions, ...args)
   }
 
   const printFromImageElement = async (
     imgEl: HTMLImageElement,
     scale = 1,
-    printDimensions = opts.printDimension
+    printDimensions = opts.printDimension,
+    ...args: any[]
   ) => {
     const bitmap = await createImageBitmap(imgEl)
-    printFromImageBitmap(bitmap, scale, printDimensions)
+    printFromImageBitmap(bitmap, scale, printDimensions, ...args)
   }
 }
 
@@ -210,38 +255,38 @@ const printFromImgStyle = (imgUrl: string, style: ImgStyle) => {
   console.log(
     '%c' + style.string,
     style.style +
-    'background-image: url(' +
-    imgUrl +
-    '); background-size: ' +
-    style.width +
-    'px ' +
-    style.height +
-    'px; background-size: 100% 100%; background-repeat: norepeat; color: transparent;'
+      'background-image: url(' +
+      imgUrl +
+      '); background-size: ' +
+      style.width +
+      'px ' +
+      style.height +
+      'px; background-size: 100% 100%; background-repeat: norepeat; color: transparent;'
   )
 }
 
 const createOffscreenCanvas = (
   size: Dimensions
 ): HTMLCanvasElement | OffscreenCanvas => {
-  let canvas;
+  let canvas
   // @ts-ignore
   if (
-    typeof window === "undefined" ||
-    typeof window.OffscreenCanvas !== "undefined"
+    typeof window === 'undefined' ||
+    typeof window.OffscreenCanvas !== 'undefined'
   ) {
     // @ts-ignore
-    canvas = new OffscreenCanvas(size.w, size.h);
+    canvas = new OffscreenCanvas(size.w, size.h)
   } else {
     // Offscreen canvas isn't supported: fall back to HTML Canvas
-    canvas = document.createElement("canvas");
-    canvas.style.display = "none";
+    canvas = document.createElement('canvas')
+    canvas.style.display = 'none'
   }
 
-  canvas.width = size.w;
-  canvas.height = size.h;
+  canvas.width = size.w
+  canvas.height = size.h
 
-  return canvas;
-};
+  return canvas
+}
 
 const createCanvas = (size: Dimensions, elemId?: string): HTMLCanvasElement => {
   const canvas = document.createElement('canvas') as HTMLCanvasElement
