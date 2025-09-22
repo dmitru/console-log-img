@@ -121,7 +121,7 @@ export const initConsoleLogImg = (opts = defaultOpts) => {
         w: newW,
         h: newH,
       }) as OffscreenCanvas
-      const canvasScaledCtx = canvasScaled.getContext('2d')
+      const canvasScaledCtx = canvasScaled.getContext('2d') as OffscreenCanvasRenderingContext2D
       canvasScaledCtx.drawImage(
         canvas,
         0,
@@ -135,6 +135,7 @@ export const initConsoleLogImg = (opts = defaultOpts) => {
       )
 
       dataUriPromise = new Promise<string>((resolve) =>
+        // @ts-ignore - convertToBlob exists on OffscreenCanvas but TypeScript doesn't recognize it
         canvasScaled.convertToBlob().then((blob) => {
           const reader = new FileReader()
           reader.readAsDataURL(blob)
